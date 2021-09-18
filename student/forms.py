@@ -1,17 +1,26 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from flatpickr import DatePickerInput
+
 from django.contrib.auth.models import User
-from .models import student
+from .models import Student
 
-class UserForm(forms.ModelForm):
+class RegisterForm(UserCreationForm):
+    #email = forms.EmailField()
     class Meta:
-        model=User
-        fields=['first_name','last_name','username','password']
-        widgets = {
-        'password': forms.PasswordInput()
-        }
+        model = User
+        fields = ["username", "email", "password1", "password2"]
 
-class StudentForm(forms.ModelForm):
+
+class EditForm(forms.ModelForm):
+    #email = forms.EmailField()
     class Meta:
-        model=student
-        fields=['address','mobile','profile_pic']
+        model = User
+        fields = ["first_name", "last_name", "username", "email"]
 
+class studentForm(forms.ModelForm):
+    #birth_date = forms.DateField(label='What is your birth date?', widget=forms.SelectDateWidget)
+    #birth_date = forms.DateField(widget=DatePickerInput())
+    class Meta:
+        model = Student
+        fields = ["birth_date", "profile_pic", "address", "mobile"]

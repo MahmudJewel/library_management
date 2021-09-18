@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 {% load widget_tweaks %}
+{% load crispy_forms_tags %}
 <html>
     <head>
         <meta charset="utf-8">
@@ -12,6 +14,7 @@
         .registration-form{
         padding: 50px 0;
         }
+
         .registration-form form{
         background-color: #fff;
         max-width: 600px;
@@ -24,7 +27,7 @@
         .registration-form .form-icon{
         text-align: center;
         background-color: #5891ff;
-        border-radius: 50%;
+        border-radius: 30%;
         font-size: 40px;
         color: white;
         width: 100px;
@@ -33,6 +36,11 @@
         margin-bottom: 50px;
         line-height: 100px;
         }
+
+        img{
+          border-radius: 30%;
+        }
+
         .registration-form .item{
         border-radius: 20px;
         margin-bottom: 25px;
@@ -102,37 +110,47 @@
             <form method="POST" autocomplete="off" enctype="multipart/form-data">
               {% csrf_token %}
                 <div class="form-icon">
-                    <span><i class="icon icon-user"></i></span>
+                    <img src="{% static student.profile_pic.url %}" alt="Profile Pic" height="100px" width="100px" />
                 </div>
 
                 <div class="form-group">
-                  {% render_field RegisterForm.username|attr:'required:true'  class="form-control item" placeholder="Username" %}
+                	<label>Username</label>
+                  {% render_field userForm.username|attr:'required:true'  class="form-control item" placeholder="Username" %}
                 </div>
 
                 <div class="form-group">
-                  {% render_field RegisterForm.email class="form-control item" placeholder="Email" %}
+                	<label>First name</label>
+                  {% render_field userForm.first_name|attr:'required:true'  class="form-control item" placeholder="Username" %}
+                </div>
+                <div class="form-group">
+                	<label>Last Name</label>
+                  {% render_field userForm.last_name|attr:'required:true'  class="form-control item" placeholder="Username" %}
+                </div>
+                <div class="form-group">
+                	<label>Email</label>
+                  {% render_field userForm.email|attr:'required:true'  class="form-control item" placeholder="Username" %}
+                </div>
+                <div class="form-group">
+                	<label>Birthdate</label>
+                  {% render_field studentForm.birth_date|attr:'required:true'  class="form-control item" placeholder="Username" %}
+                </div>
+                <div class="form-group">
+                	<label>Address</label>
+                  {% render_field studentForm.address|attr:'required:true'  class="form-control item" placeholder="Username" %}
+                </div>
+                <div class="form-group">
+                	<label>Mobile</label>
+                  {% render_field studentForm.mobile|attr:'required:true'  class="form-control item" placeholder="Username" %}
+                </div>
+                <div class="form-group">
+                	<label>Profile Pic</label>
+                  {% render_field studentForm.profile_pic class="form-control item" placeholder="Username" %}
                 </div>
 
                 <div class="form-group">
-                  {% render_field RegisterForm.password1|attr:'required:true'  class="form-control item" placeholder="Password" %}
-                </div>
-
-                <div class="form-group">
-                  {% render_field RegisterForm.password2|attr:'required:true'  class="form-control item" placeholder="Password comfirmation" %}
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-block create-account">Create Account</button>
+                    <button type="submit" class="btn btn-block create-account">Update Account</button>
                 </div>
             </form>
-            <div class="social-media">
-                <h5>Sign up with social media</h5>
-                <div class="social-icons">
-                    <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
-                    <a href="#"><i class="icon-social-google" title="Google"></i></a>
-                    <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
-                </div>
-            </div>
         </div>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

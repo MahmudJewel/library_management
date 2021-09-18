@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,7 +41,10 @@ INSTALLED_APPS = [
     'home',
     'admn',
     'student',
-    'widget_tweaks'
+    'widget_tweaks',
+    'crispy_forms',
+    'flatpickr',
+    #'student.apps.StudentConfig'
 ]
 
 MIDDLEWARE = [
@@ -132,3 +136,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'djangoAutoStatic') #collectstatic==> autom
 MEDIA_ROOT=os.path.join(BASE_DIR,'static') #for imagefield
 #End added
 
+LOGIN_REDIRECT_URL = "afterlogin"
+#LOGOUT_REDIRECT_URL = "/"
