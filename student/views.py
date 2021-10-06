@@ -53,4 +53,4 @@ def upadate_profile_view(request, pk):
 		'student':student
 	}
 
-	return render(request,'student/signup2.html', context)
+	return render(request,'student/profile.html', context)
